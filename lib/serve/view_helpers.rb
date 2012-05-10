@@ -169,11 +169,11 @@ module Serve #:nodoc:
   
   module TagHelpers
     def content_tag(name, content, html_options={})
-      %{<#{name}#{html_attributes(html_options)}>#{content}</#{name}>}
+      (%{<#{name}#{html_attributes(html_options)}>#{content}</#{name}>}).html_safe
     end
     
     def tag(name, html_options={})
-      %{<#{name}#{html_attributes(html_options)} />}
+      (%{<#{name}#{html_attributes(html_options)} />}).html_safe
     end
     
     def image_tag(src, html_options = {})
