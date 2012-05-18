@@ -60,14 +60,15 @@ module Serve #:nodoc:
     def capture_erb(&block)
       buffer = ""
       old_buffer, @_out_buf = @_out_buf, buffer
-      yield
+      buffer = yield
       buffer
     ensure
       @_out_buf = old_buffer
     end
     alias capture_rhtml capture_erb
     alias capture_erubis capture_erb
-    
+    alias capture_slim capture_erb
+
     def capture(&block)
       capture_method = "capture_#{script_extension}"
       if respond_to? capture_method
