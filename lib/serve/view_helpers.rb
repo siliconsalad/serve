@@ -201,7 +201,7 @@ module Serve #:nodoc:
       function = args[0] || ''
       onclick = "#{"#{html_options[:onclick]}; " if html_options[:onclick]}#{function}; return false;"
       href = html_options[:href] || '#'
-      content_tag(:a, name, html_options.merge(:href => href, :onclick => onclick))
+      content_tag(:a, block.call, html_options.merge(:href => href, :onclick => onclick))
     end
     
     def mail_to(email_address, name = nil, html_options = {})
